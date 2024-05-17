@@ -1,0 +1,282 @@
+*For non-calibration, calibrators are fixed.
+*--------------------------------------------------
+$ifthen.Calfx %UI_Cal% == No
+        CalEPrcRtl.fx(Yr,HMR,Sea)=CalEPrcRtl.L(Yr,HMR,Sea);
+        CalEPrcRtl2.fx(Yr,HMR,Sea)=CalEPrcRtl2.L(Yr,HMR,Sea);
+        CalEDemCoeff.fx(Yr,HMR,Sea,TB)=CalEDemCoeff.L(Yr,HMR,Sea,TB);
+        CalGen.fx(Yr,HMR,Fuel)=CalGen.L(Yr,HMR,Fuel);
+        CalGenTot.fx(Yr,HMR)=CalGenTot.L(Yr,HMR);
+        CalEmis.fx(Yr)=CalEmis.L(Yr);
+        CalEmisRGGI.fx(Yr)=CalEmisRGGI.L(Yr);
+$endif.Calfx
+
+* Bounds on NPCap impose planned investments and retirements, and non-retireables and non-investables.
+*--------------------------------------------------
+*~*~*~*~*~*~* WARNING: .fx sets .lo=.up=.L
+
+*Capacity in year 0 is exogenous.
+NPCap.fx('Yr0',HMR,MP)=NPCap0(HMR,MP);
+*Account for cumulative planned investments and retirements.
+NPCap.up(Yr,HMR,MPEx)=NPCap0(HMR,MPEx)+CumPlnInvRtr(Yr,HMR,MPEx);
+NPCap.lo(Yr,HMR,MPNew)=CumPlnInvRtr(Yr,HMR,MPNew);
+*Investments in new MPs that are not in CumPlnInvRtr cannot occur before DataYr+LeadTime.
+NPCap.up(Yr,HMR,MPNew)$(SimYrFull(Yr)<DataYr+LeadTime(HMR,MPNew))=NPCap.lo(Yr,HMR,MPNew);
+*Investments in CCS that are not in CumPlnInvRtr cannot occur before 2028
+NPCap.up(Yr,HMR,MPCCS)$(SimYrFull(Yr)<2028)=NPCap.lo(Yr,HMR,MPCCS);
+$ifthen.EPRICCS %UI_EPRIScen% == Low
+NPCap.up(Yr,HMR,MPCCS)$(SimYrFull(Yr)<2030)=NPCap.lo(Yr,HMR,MPCCS);
+$endif.EPRICCS
+
+
+*CA, OR, WA, RGGI10 states will not build new coal CCS
+NPCap.up(Yr,HMR,"New Steam Coal CCS90")$(HMR_CA(HMR) or HMR_OR(HMR) or HMR_WA(HMR) or HMR_RGGI10(HMR))=0;
+NPCap.up(Yr,HMR,"New Steam Coal CCS30")$(HMR_CA(HMR) or HMR_OR(HMR) or HMR_WA(HMR) or HMR_RGGI10(HMR))=0;
+*NPCap.up(Yr,HMR,"New Steam Coal CCS90")=0;
+*NPCap.up(Yr,HMR,"New Steam Coal CCS30")=0;
+*Adjust Upper Bound on Wind Capacity to Take into account Maximum wind potential of each HMR
+NPCap.Up(Yr,HMR,'New Onshore Wind')$(SimYrFull(Yr)>=DataYr+LeadTime(HMR,'New Onshore Wind')) = WindMaxCap(HMR,'Onshore');
+NPCap.Up(Yr,HMR,'New Offshore Wind')$(SimYrFull(Yr)>=DataYr+LeadTime(HMR,'New Offshore Wind')) = max(CumPlnInvRtr(Yr,HMR,'New Offshore Wind'),TechTgt(Yr,HMR,'Offshore'),WindMaxCap(HMR,'Offshore'),NPCapMax(Yr,HMR,'New Offshore Wind'));
+*make adjustement to RI to avoid data violation where WindMaxCap<CumPlnInvRtr
+*NPCap.Up(Yr,'RI','New Offshore Wind')$(SimYrFull(Yr)>=DataYr+LeadTime('RI','New Offshore Wind')) = CumPlnInvRtr(Yr,'RI','New Offshore Wind');
+*NPCap.Up(Yr,'VA','New Offshore Wind')$(SimYrFull(Yr)>=DataYr+LeadTime('VA','New Offshore Wind')) = 10;
+*Fix all cofiring coal plants at zero unless otherwise noted
+NPCap.fx(Yr,HMR,MP)$(MPCofire(MP) and MPNew(MP)) = 0;
+NPCap.fx(Yr,HMR,MP)$(MPCCSRetrofit(MP)) = 0;
+*NPCap.fx(Yr,HMR,'New NGCC CCS') = 0;
+*NPCap.fx(Yr,HMR,'New Steam Coal CCS90') = 0;
+
+*if we are in a cofiring scenario, unfix the cofiring plants
+$ifthen.cofire  %UI_Cofire%==Yes
+NPCap.up(Yr,HMR,MP)$(MPCofire(MP) and MPNew(MP) and HMRMP(HMR,MP) and SimYr(Yr)>2020) = +Inf;
+$elseif.cofire  %UI_Cofire%==20
+NPCap.up(Yr,HMR,MP)$(MPCofire(MP) and MPNew(MP) and MPRetrofit(MP,'New20') and HMRMP(HMR,MP) and SimYr(Yr)>2020) = +Inf;
+$elseif.cofire  %UI_Cofire%==60
+NPCap.up(Yr,HMR,MP)$(MPCofire(MP) and MPNew(MP) and MPRetrofit(MP,'New60') and HMRMP(HMR,MP) and SimYr(Yr)>2020) = +Inf;
+$elseif.cofire  %UI_Cofire%==100
+NPCap.up(Yr,HMR,MP)$(MPCofire(MP) and MPNew(MP) and MPRetrofit(MP,'New100') and HMRMP(HMR,MP) and SimYr(Yr)>2020) = +Inf;
+$elseif.cofire  %UI_Cofire%==2060
+NPCap.up(Yr,HMR,MP)$(MPCofire(MP) and MPNew(MP) and (MPRetrofit(MP,'New20') or MPRetrofit(MP,'New60')) and HMRMP(HMR,MP) and SimYr(Yr)>2020) = +Inf;
+$elseif.cofire  %UI_Cofire%==60100
+NPCap.up(Yr,HMR,MP)$(MPCofire(MP) and MPNew(MP) and (MPRetrofit(MP,'New60') or MPRetrofit(MP,'New100')) and HMRMP(HMR,MP) and SimYr(Yr)>2020) = +Inf;
+$endif.cofire
+
+$ifthen.ccsretrofit  %UI_CCSRetrofit%==Yes
+NPCap.up(Yr,HMR,MP)$(MPCCSRetrofit(MP) and MPNew(MP) and HMRMP(HMR,MP) and SimYr(Yr)>2020) = +Inf;
+$endif.ccsretrofit
+
+*Turn off CCS prior to 2028
+NPCap.fx(Yr,HMR,MP)$(MPCCS(MP) and SimYr(Yr)<2028) = 0;
+GenCCS45q.fx(Yr,HMR,MPCCS,Sea,TB)$(SimYr(Yr)<2028) = 0;
+GenCCSno45q.fx(Yr,HMR,MPCCS,Sea,TB)$(SimYr(Yr)<2028) = 0;
+
+
+*For calibration, non-retireable and non-investable MPs get exogenous capacity based on initial capacity and planned
+*retirements and investments. For non-calibration, exogenous capacity comes from the calibrator.
+$ifthen %UI_Cal% == Yes
+        NPCap.lo(Yr,HMR,MPNoRtrInv(MPEx))=NPCap.up(Yr,HMR,MPEx);
+        NPCap.up(Yr,HMR,MPNoRtrInv(MPNew))=NPCap.lo(Yr,HMR,MPNew);
+$else
+        NPCap.fx(Yr,HMR,MPNoRtrInv(MP))=CalNPCap(Yr,HMR,MP);
+*        NPCap.fx(Yr,'VA',MP)$(MPTech(MP,'CHP') and SimYr(Yr)>=2045)=0;
+*        NPCap.fx(Yr,HMR,MP)$(MPTech(MP,'CHP') and SimYr(Yr)>=2045 and HMR_RGGI12(HMR) and (not MPFuel(MP,'Bio')))=0;
+$endif
+
+*if colorado coal is turned off early
+$ifthenE.coal not %UI_COCoal% == 0
+        NPCap.fx(Yr,'CO',MP)$(MPFuel(MP,'Coal') and (SimYr(Yr)>= %UI_COCoal%))=0;
+        NPCap.l(Yr,'CO',MP)$(MPFuel(MP,'Coal') and (SimYr(Yr)>= %UI_COCoal%))=0;
+$endif.coal
+
+*No endogneous investment is allowed in DC.
+NPCap.up(Yr,'DC',MPNew)=CumPlnInvRtr(Yr,'DC',MPNew);
+*When NPCap.up=NPCap.lo (i.e. MP non-retireable or non-investable) there is no MCP_gamma equation and no necessity for
+*a gamma variable.
+gamma.lo(Yr,HMR,MP)=0; gamma.up(Yr,HMR,MP)=+INF;
+gamma.fx(Yr,HMR,MP)$(NPCap.up(Yr,HMR,MP)=NPCap.lo(Yr,HMR,MP))=0;
+
+*Transmission must be <= transmission capability.
+*--------------------------------------------------
+$ifthen not %UI_fxTrans% == 0
+        Trans.up(Yr,HMRe,HMRi,Sea,TB)=CalTrans(Yr,HMRe,HMRi,Sea,TB);
+$else
+        Trans.up(Yr,HMRe,HMRi,Sea,TB)=TransCap(Yr,HMRe,HMRi,Sea)*Hrs(Sea,Tb);
+*         Trans.up(Yr,HMRe,HMRi,Sea,TB)$(SimYr(Yr) > %UI_FxCap%)  = TransCapMax0(HMRe,HMRi)*Hrs(Sea,TB);
+*Transmission From E4ST Constraints (WECC: 2030, EI: 2020, ERCOT: 2026)
+*         Trans.up(Yr,HMRe,HMRi,Sea,TB) = TransCapMax0(HMRe,HMRi)*Hrs(Sea,TB);
+*         Trans.up(Yr,HMRe,HMRi,Sea,TB)$(SimYr(Yr)>2020 and HMR_EI(HMRe) and HMR_EI(HMRi))  = TransCapMax0(HMRe,HMRi)*Hrs(Sea,TB)*(1.005)**Max(0,(SimYr(Yr)-2020));
+*         Trans.up(Yr,HMRe,HMRi,Sea,TB)$(SimYr(Yr)>2030 and HMR_WECC(HMRe) and HMR_WECC(HMRi))  = TransCapMax0(HMRe,HMRi)*Hrs(Sea,TB)*(1.005)**Max(0,(SimYr(Yr)-2030));
+*         Trans.up(Yr,HMRe,HMRi,Sea,TB)$(SimYr(Yr)>2026 and (HMR_ERCOT(HMRe) or HMR_ERCOT(HMRi)))  = TransCapMax0(HMRe,HMRi)*Hrs(Sea,TB)*(1.005)**Max(0,(SimYr(Yr)-2026));
+$endif
+
+;
+parameter
+transupperbd(Yr,HMRe,HMRi,Sea,TB);
+
+
+$ifthen.trans %UI_FxTransCons% == Yes
+*temporarily save the Trans values we currently have
+        parameter
+        TempTransUp(Yr,HMRe,HMRi,Sea,TB)
+        TempTransL(Yr,HMRe,HMRi,Sea,TB)
+        ;
+        TempTransUp(Yr,HMRe,HMRi,Sea,TB) = Trans.up(Yr,HMRe,HMRi,Sea,TB);
+        TempTransL(Yr,HMRe,HMRi,Sea,TB)  = Trans.l(Yr,HMRe,HMRi,Sea,TB);
+*load Transmission from reference scenario.
+        put dummy;
+        put_utility 'gdxin' / '%UI_RootDir%\..\%UI_vRS1%\Output\%UI_RefScen1%\%UI_vRS1%_%UI_RefScen1%';
+        execute_load Trans.l;
+        putclose;
+*set values for fixed transmission
+        TransFx(Yr,HMRe,HMRi,Sea,TB) = Trans.l(Yr,HMRe,HMRi,Sea,TB);
+        display TransFx;
+*restore saved values
+        Trans.up(Yr,HMRe,HMRi,Sea,TB) = TempTransUp(Yr,HMRe,HMRi,Sea,TB);
+        Trans.l(Yr,HMRe,HMRi,Sea,TB) = TempTransL(Yr,HMRe,HMRi,Sea,TB);
+$endif.trans
+
+GenFx(Yr,HMR,MP,Sea,TB) = +INF;
+
+$ifthen.CAExp not %UI_CAImp% == Yes
+ExpERo(Yr,HMR) =  0.4*smax(MP,ERo(Yr,HMR,MP,'CO2')$MPFuel(MP,'NG')$MPTech(MP,'CC'));
+$endif.CAExp
+
+$ifthen.gen not %UI_FxGen% == 0
+*note that Gen.l has no value at this point in the code, so temporarily saving the value causes $141
+*I am leaving this temporary saving code here just in case we some day give gen.l initial values prior
+*to this if statement and need to preserve them --MD 3/11/2021
+*temporarily save the Gen values we currently have
+*        parameter
+*        TempGenL(Yr,HMR,MP,Sea,TB)
+*        ;
+*        TempGenL(Yr,HMR,MP,Sea,TB) = Gen.l(Yr,HMR,MP,Sea,TB);
+*load Generation from reference scenario.
+        put dummy;
+        put_utility 'gdxin' / '%UI_RootDir%\..\%UI_vRS2%\Output\%UI_RefScen2%\%UI_vRS2%_%UI_RefScen2%';
+        execute_load Gen.l;
+        putclose;
+*set values for fixed Generation
+        GenFx(Yr,HMR,MP,Sea,TB)$(SimYr(Yr)<= %UI_FxGen%) = Gen.l(Yr,HMR,MP,Sea,TB);
+*Emissions Import Rate - note that sometimes DC has zero generation
+        ExpERo(Yr,HMR)$(sum((MP,Sea,TB),Gen.l(Yr,HMR,MP,Sea,TB))<>0) = sum((MP,Sea,TB),Gen.l(Yr,HMR,MP,Sea,TB)*ERo(Yr,HMR,MP,'CO2'))/sum((MP,Sea,TB),Gen.l(Yr,HMR,MP,Sea,TB));
+*restore Gen values to original values
+*        Gen.l(Yr,HMR,MP,Sea,TB) = TempGenL(Yr,HMR,MP,Sea,TB);
+        Gen.l(Yr,HMR,MP,Sea,TB) = 0;
+$endif.gen
+
+GenNukeFx(Yr,HMR,MP,Sea,TB) = +INF;
+$ifthen.nukegen not %UI_FxNukeGen% == 3000
+*load Generation from reference scenario.
+        put dummy;
+        put_utility 'gdxin' / '%UI_RootDir%\..\%UI_vRS2%\Output\%UI_RefScen2%\%UI_vRS2%_%UI_RefScen2%';
+        execute_load Gen.l;
+        putclose;
+*set values for fixed Generation
+        GenNukeFx(Yr,HMR,MP,Sea,TB)$(SimYr(Yr)>= %UI_FxNukeGen%) = Gen.l(Yr,HMR,MP,Sea,TB)$(MPFuel(MP,'Nuke'));
+*restore Gen values to original values
+*        Gen.l(Yr,HMR,MP,Sea,TB) = TempGenL(Yr,HMR,MP,Sea,TB);
+        Gen.l(Yr,HMR,MP,Sea,TB) = 0;
+
+*Diablo Canyon Exception
+$ifthen.DiabloCanyonExp %UI_Diablo% == Extended
+         GenNukeFx(Yr,'CA',MP,Sea,TB)$(SimYr(Yr) <= 2030) = +INF;
+$endif.DiabloCanyonExp
+
+$endif.nukegen
+
+
+* Tweak capacity and availibility factors for calibration feasibility.
+*--------------------------------------------------
+$ifthen %UI_Cal% == Yes
+*ACF* are the parameters used in each run. CalACF* carrry ACF* calibration values to other scenarios.
+$include DS7a_TwkACF
+        CalACFGen(Yr,HMR,MP,Sea,TB)=ACFGen(Yr,HMR,MP,Sea,TB);
+        CalACFRsv(Yr,HMR,MP,Sea,TB)=ACFRsv(Yr,HMR,MP,Sea,TB);
+        CalRsvMrg(Yr,RsvRg)=RsvMrg(Yr,RsvRg);
+$else
+        ACFGen(Yr,HMR,MP,Sea,TB)=CalACFGen(Yr,HMR,MP,Sea,TB);
+*        ACFRsv(Yr,HMR,MP,Sea,TB)$( not (MPCofire(MP) and MPNew(MP)))=CalACFRsv(Yr,HMR,MP,Sea,TB);
+        ACFRsv(Yr,HMR,MP,Sea,TB)=CalACFRsv(Yr,HMR,MP,Sea,TB);
+        RsvMrg(Yr,RsvRg)=CalRsvMrg(Yr,RsvRg);
+$endif
+
+$ifthen.nuke %UI_NukeCal% == Yes
+*adjust Nuclear generation assigned to each state so that calibration to total generation in each state will also be adjusted
+*see DS7a Tweak #3
+GenAEOSeaFuel(Yr,HMR,Sea,"Nuke") = sum((MP,TB),
+        ( NPCap.up(Yr,HMR,MP)*OpNPCapRat(HMR,MP,Sea)*ACFGen(Yr,HMR,MP,Sea,TB)*Hrs(Sea,TB) )
+                $(ACFGen(Yr,HMR,MP,Sea,TB) and MPFuel(MP,"Nuke")) );
+$endif.nuke
+
+* Non-dispatchables generate at an exogenous capacity factor due to the MCP_NoDsp equation. For non-dispatchables that
+* are also non-retireables/investables, this translates to exogenous Gen. For these MPs, NPCap is fixed and therefore
+* do not require an MCP_lambda equation or variable.
+*--------------------------------------------------
+MPExoGen(Yr,HMR,MP)=YES$(MPNoRtrInv(MP) and (MPNoDsp(MP) or NPCap.up(Yr,HMR,MP)=0));
+Gen.lo(Yr,HMR,MP,Sea,TB)=0; Gen.up(Yr,HMR,MP,Sea,TB)=+INF;
+Gen.fx(Yr,HMR,MP,Sea,TB)$MPExoGen(Yr,HMR,MP)=NPCap.up(Yr,HMR,MP)*OpNPCapRat(HMR,MP,Sea)*ACFGen(Yr,HMR,MP,Sea,TB)*Hrs(Sea,TB);
+lambda.lo(Yr,HMR,MP,Sea,TB)=0; lambda.up(Yr,HMR,MP,Sea,TB)=+INF;
+lambda.up(Yr,HMR,MP,Sea,TB)$MPExoGen(Yr,HMR,MP)=0;
+* The NoDsp
+MCNoDsp.lo(Yr,HMR,MP,Sea,TB)=0; MCNoDsp.up(Yr,HMR,MP,Sea,TB)=+INF;
+MCNoDsp.fx(Yr,HMR,MP,Sea,TB)$(not MPNoDsp(MP) or MPNoRtrInv(MP))=0;
+MCNoDsp.fx(Yr,HMR,MP,Sea,TB)$(HMR_TX(HMR) and (MPFuel(MP,'Solar') or MPFuel(MP,'Wind')))=0;
+*display MPExoGen, Gen.up, lambda.up, MCNoDsp.up;
+
+* Fix all non-storage variable consumption, since only batteries and pumped storage consume
+*----------------------------------------------------------------
+EConsStorage.fx(Yr,HMR,MP,Sea,TB)$(not MPFuel(MP,'Storage')) = 0;
+
+* Fix all unconnected CCS production-storage nodes to zero
+*---------------------------------------------------------
+CCSEmis.fx(Yr,HMRe,HMRi,StepCCS,TypeCCS)$(CCSCost(HMRe,HMRi,StepCCS,TypeCCS)=0) = 0;
+
+* Further limit CCS storage in some states -- CA, OR, WA, RGGI states will not do EOR or saline (come back to improve this to only prevent out-of-state CO2 storage)
+*---------------------------------------------------------
+CCSEmis.fx(Yr,HMRe,HMRi,StepCCS,TypeCCS)$(HMR_CA(HMRi) or HMR_OR(HMRi) or HMR_WA(HMRi) or HMR_RGGI10(HMRi)) = 0;
+*CCSEmis.up(Yr,HMRe,HMRi,StepCCS,'saline')$(CCSCost(HMRe,HMRi,StepCCS,'saline')<>0 and (HMR_CA(HMRe) and HMR_CA(HMRi)) or (HMR_OR(HMRe) and HMR_OR(HMRi)) or (HMR_WA(HMRe) and HMR_WA(HMRi)) or (HMR_RGGI10(HMRe) and HMR_RGGI10(HMRi)))=7;
+
+* ECons.lo<>0 and ECons.up<>+INF can enter through initial values. They are reset and set again as needed.
+*--------------------------------------------------
+ECons.lo(Yr,HMR,Sea,TB)=0; ECons.up(Yr,HMR,Sea,TB)=+INF;
+
+* Electricity consumption can be made exogenous by invoking the UI_fxDem control variable.
+*--------------------------------------------------
+$ifthen.fxDemO not %UI_fxDem%==0
+$ifthen.fxDemI %UI_fxDem%==EConsExo
+        ECons.fx(Yr,HMR,Sea,TB)=sum(Sector,Cons0(Yr,HMR,Sector)*SeaPctAnn(Yr,HMR,Sea,Sector)*TBpctSea(Yr,HMR,Sea,TB,Sector));
+$else.fxDemI
+        put dummy;
+        put_utility 'gdxin' / '%UI_RootDir%\..\Shared\Solutions\%UI_fxDem%';
+        execute_load ECons;
+        putclose;
+        ECons.fx(Yr,HMR,Sea,TB)=ECons.L(Yr,HMR,Sea,TB);
+$endif.fxDemI
+        MCCap.fx(Yr,RsvRg,Sea,TB)$( sum(HMR,ECons.up(Yr,HMR,Sea,TB)$map_RsvRg(HMR,RsvRg))<+INF
+                and sum((HMR,MP),(NPCap.up(Yr,HMR,MP)>NPCap.lo(Yr,HMR,MP))$map_RsvRg(HMR,RsvRg))=0 )=0;
+$if %UI_Cal%==Yes CalEDemCoeff.fx(Yr,HMR,Sea,TB)=sum(Sector,Cons0(Yr,HMR,Sector)*SeaPctAnn(Yr,HMR,Sea,Sector)*TBpctSea(Yr,HMR,Sea,TB,Sector))*EPrcRef(Yr,HMR,Sea,TB)**(-EDemElast);
+$endif.fxDemO
+
+*We're defining CalEDemCoeff for the LP, where consumption is always fixed.
+$if %UI_Cal%==Yes CalEDemCoeff.fx(Yr,HMR,Sea,TB)=sum(Sector,Cons0(Yr,HMR,Sector)*SeaPctAnn(Yr,HMR,Sea,Sector)*TBpctSea(Yr,HMR,Sea,TB,Sector))*EPrcRef(Yr,HMR,Sea,TB)**(-EDemElast);
+
+* Retail electricity prices can be made exogenous by invoking the UI_fxPrcHMR control variable.
+*--------------------------------------------------
+Set HMRfxPrc(HMR) HMRs that have fixed retail electricity prices /%UI_fxPrcHMR%/;
+$if.LPskip not %UI_Func%==LP EPrcRtl.fx(Yr,HMR,Sea)$HMRfxPrc(HMR)=EPrcRtl.L(Yr,HMR,Sea);
+$if %UI_Cal%==Yes CalEPrcRtl.fx(Yr,HMR,Sea)$HMRfxPrc(HMR)=0;
+$if %UI_Cal%==Yes CalEPrcRtl2.fx(Yr,HMR,Sea)$HMRfxPrc(HMR)=0;
+$onText
+parameter
+TransMap(HMRe,HMRi);
+;
+
+TransMap(HMRe,HMRi) = TransCap0(HMRe,HMRi)*(sum(PPAR,(sum(Yrdup, map_FxTrans_YPH(Yrdup,PPAR,HMRe))
+                                                      or sum(Yrdup, map_FxTrans_YPH(Yrdup,PPAR,HMRi)))
+                                         and (not (sum(Yrdup, map_FxTrans_YPH(Yrdup,PPAR,HMRe))
+                                                              and sum(Yrdup, map_FxTrans_YPH(Yrdup,PPAR,HMRi))))));
+
+display
+TransMap
+;
+
+$offText

@@ -1,0 +1,12 @@
+epopt 1E-9
+NPCapEq.FeasPref             0
+SupDemEq.FeasPref            0
+RsvMrgEq.FeasPref            0
+GenLeCapEq.FeasPref          0
+NoDspEq.FeasPref             0
+CalVOMEq.FeasPref            0
+CalGenNatFuel.FeasPref       0
+CalGenNat1Fuel.FeasPref      0
+iis=1
+conflictalg = 1
+conflictdisplay = 2

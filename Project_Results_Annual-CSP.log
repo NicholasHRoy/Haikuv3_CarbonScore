@@ -1,0 +1,470 @@
+
+--- Job Project_Results_Annual-CSP.gms Start 04/09/24 14:20:03 35.1.0 r82a9585 WEX-WEI x86 64bit/MS Windows
+--- Applying:
+    C:\GAMS\35\gmsprmNT.txt
+--- GAMS Parameters defined
+    Input T:\Haikuv3\GAMS_161201\Scenarios\230901_CSP\Project_Results_Annual-CSP.gms
+    PageWidth 80
+    PageSize 0
+    PageContr 3
+    Action CE
+    ScrDir T:\Haikuv3\GAMS_161201\Scenarios\230901_CSP\225f\
+    SysDir C:\GAMS\35\
+    WorkDir T:\Haikuv3\GAMS_161201\Scenarios\230901_CSP\
+    LogOption 3
+    DFormat 0
+    TFormat 0
+    ErrorLog 99
+    IDE 1
+Licensee: Small MUD - 5 User License                     G210527|0002AS-WIN
+          Resources for the Future, Climate and Electricity Center    DC872
+          C:\GAMS\35\gamslice.txt
+          License Admin: Mike Raftery, raftery@rff.org                     
+GAMS 35.1.0   Copyright (C) 1987-2021 GAMS Development. All rights reserved
+--- Starting compilation
+--- Project_Results_Annual-CSP.gms(7) 2 Mb
+--- . CopyLib.gms(5) 2 Mb
+--- call copy lib\Init.gms                              Init.gms
+        1 file(s) copied.
+--- . CopyLib.gms(8) 2 Mb
+--- call copy lib\00_Opts\ConvertD.opt                  ConvertD.opt
+The system cannot find the path specified.
+--- . CopyLib.gms(9) 2 Mb
+--- call copy lib\00_Opts\cplex.opt                     cplex.opt
+The system cannot find the path specified.
+--- . CopyLib.gms(10) 2 Mb
+--- call copy lib\00_Opts\gamschk.opt                   gamschk.opt
+The system cannot find the path specified.
+--- . CopyLib.gms(11) 2 Mb
+--- call copy lib\00_Opts\gdx2xls.ini                   gdx2xls.ini
+The system cannot find the path specified.
+--- . CopyLib.gms(12) 2 Mb
+--- call copy lib\00_Opts\MCP_SclItrp.gck               MCP_SclItrp.gck
+The system cannot find the path specified.
+--- . CopyLib.gms(13) 2 Mb
+--- call copy lib\00_Opts\path.opt                      path.opt
+The system cannot find the path specified.
+--- . CopyLib.gms(16) 2 Mb
+--- call copy lib\01_DefScen\DefScen.gms                DefScen.gms
+        1 file(s) copied.
+--- . CopyLib.gms(17) 2 Mb
+--- call copy lib\01_DefScen\macros_utility.gms         macros_utility.gms
+        1 file(s) copied.
+--- . CopyLib.gms(18) 2 Mb
+--- call copy lib\01_DefScen\DS1_Macros.gms             DS1_Macros.gms
+        1 file(s) copied.
+--- . CopyLib.gms(19) 2 Mb
+--- call copy lib\01_DefScen\DS2_DecSetsPrm_LdData.gms  DS2_DecSetsPrm_LdData.gms
+        1 file(s) copied.
+--- . CopyLib.gms(20) 2 Mb
+--- call copy lib\01_DefScen\DS3_General.gms            DS3_General.gms
+        1 file(s) copied.
+--- . CopyLib.gms(21) 2 Mb
+--- call copy lib\01_DefScen\DS4_PPAR.gms               DS4_PPAR.gms
+        1 file(s) copied.
+--- . CopyLib.gms(22) 2 Mb
+--- call copy lib\01_DefScen\DS4a_Consumption.gms       DS4a_Consumption.gms
+        1 file(s) copied.
+--- . CopyLib.gms(23) 2 Mb
+--- call copy lib\01_DefScen\DS5_DecVarEqMdl.gms        DS5_DecVarEqMdl.gms
+        1 file(s) copied.
+--- . CopyLib.gms(24) 2 Mb
+--- call copy lib\01_DefScen\DS6_LdInitVar.gms          DS6_LdInitVar.gms
+        1 file(s) copied.
+--- . CopyLib.gms(25) 2 Mb
+--- call copy lib\01_DefScen\DS7_Bnds.gms               DS7_Bnds.gms
+        1 file(s) copied.
+--- . CopyLib.gms(26) 2 Mb
+--- call copy lib\01_DefScen\DS7a_TwkACF.gms            DS7a_TwkACF.gms
+        1 file(s) copied.
+--- . CopyLib.gms(27) 2 Mb
+--- call copy lib\01_DefScen\DS8_PolOpts_Emis.gms       DS8_PolOpts_Emis.gms
+        1 file(s) copied.
+--- . CopyLib.gms(28) 2 Mb
+--- call copy lib\01_DefScen\DS9_PolOpts_PS.gms         DS9_PolOpts_PS.gms
+        1 file(s) copied.
+--- . CopyLib.gms(29) 2 Mb
+--- call copy lib\01_DefScen\SetPPARMapping.gms         SetPPARMapping.gms
+        1 file(s) copied.
+--- . CopyLib.gms(32) 2 Mb
+--- call copy lib\02_Model\SolveLP.gms                  SolveLP.gms
+        1 file(s) copied.
+--- . CopyLib.gms(33) 2 Mb
+--- call copy lib\02_Model\LPEq.gms                     LPEq.gms
+        1 file(s) copied.
+--- . CopyLib.gms(34) 2 Mb
+--- call copy lib\02_Model\ApplySlope.gms               ApplySlope.gms
+        1 file(s) copied.
+--- . CopyLib.gms(35) 2 Mb
+--- call copy lib\02_Model\LPPost.gms                   LPPost.gms
+        1 file(s) copied.
+--- . CopyLib.gms(36) 2 Mb
+--- call copy lib\02_Model\Diagnostics.gms              Diagnostics.gms
+        1 file(s) copied.
+--- . CopyLib.gms(37) 2 Mb
+--- call copy lib\02_Model\RtlPrc.gms                   RtlPrc.gms
+        1 file(s) copied.
+--- . CopyLib.gms(38) 2 Mb
+--- call copy lib\02_Model\SolveLP_Iterate5.gms         SolveLP_Iterate5.gms
+The system cannot find the file specified.
+--- . CopyLib.gms(39) 2 Mb
+--- call copy lib\02_Model\SolveLP_CPrcIt.gms           SolveLP_CPrcIt.gms
+        1 file(s) copied.
+--- . CopyLib.gms(40) 2 Mb
+--- call copy lib\02_Model\SolveLP_CCapIt.gms           SolveLP_CCapIt.gms
+        1 file(s) copied.
+--- . CopyLib.gms(43) 2 Mb
+--- call copy lib\03_Results\Results.gms                Results.gms
+        1 file(s) copied.
+--- . CopyLib.gms(44) 2 Mb
+--- call copy lib\03_Results\Results_Def.gms            Results_Def.gms
+        1 file(s) copied.
+--- . CopyLib.gms(45) 2 Mb
+--- call copy lib\03_Results\Results_CalcRes.gms        Results_CalcRes.gms
+        1 file(s) copied.
+--- . CopyLib.gms(46) 2 Mb
+--- call copy lib\03_Results\Results_Key_Annual.gms     Results_Key_Annual.gms
+        1 file(s) copied.
+--- . CopyLib.gms(47) 2 Mb
+--- call copy lib\03_Results\Results_Key_SeaTB.gms      Results_Key_SeaTB.gms
+        1 file(s) copied.
+--- . CopyLib.gms(48) 2 Mb
+--- call copy lib\03_Results\Results_E4.gms             Results_E4.gms
+        1 file(s) copied.
+--- . CopyLib.gms(49) 2 Mb
+--- call copy lib\03_Results\Results_ChkObjRtl.gms      Results_ChkObjRtl.gms
+        1 file(s) copied.
+--- . CopyLib.gms(50) 2 Mb
+--- call copy lib\03_Results\Results_Key_Annual-CSP.gms Results_Key_Annual-CSP.gms
+        1 file(s) copied.
+--- . CopyLib.gms(51) 2 Mb
+--- call copy lib\03_Results\Results_Key_Annual-SFC.gms Results_Key_Annual-SFC.gms
+        1 file(s) copied.
+--- . CopyLib.gms(52) 2 Mb
+--- call copy lib\03_Results\Results_Key_Annual-IRA.gms Results_Key_Annual-IRA.gms
+        1 file(s) copied.
+--- . CopyLib.gms(53) 2 Mb
+--- call copy lib\03_Results\Results_Key_Annual-VA.gms  Results_Key_Annual-VA.gms
+        1 file(s) copied.
+--- . CopyLib.gms(54) 2 Mb
+--- call copy lib\03_Results\Results_Key_Annual_States.gms  Results_Key_Annual_States.gms
+        1 file(s) copied.
+--- . CopyLib.gms(55) 2 Mb
+--- call copy lib\03_Results\Results_Key_Annual_NG.gms  Results_Key_Annual_NG.gms
+        1 file(s) copied.
+--- . CopyLib.gms(96) 2 Mb
+--- Project_Results_Annual-CSP.gms(8) 2 Mb
+--- . Init.gms(15) 2 Mb
+--- Project_Results_Annual-CSP.gms(21) 2 Mb
+--- call mkdir T:\Haikuv3\GAMS_161201\Scenarios\230901_CSP\KeyResults\KeyRes_240207_v9_CSP_31CSP_EVEmisAdj-psfin\;
+--- Project_Results_Annual-CSP.gms(37) 2 Mb
+--- . DefScen.gms(2) 2 Mb
+--- .. UI_31CSP_LPCal_231006_v5.gms(123) 2 Mb
+--- . DefScen.gms(11) 2 Mb
+--- .. DS1_Macros.gms(1) 2 Mb
+--- ... macros_utility.gms(62) 2 Mb
+--- .. DS1_Macros.gms(147) 2 Mb
+--- . DefScen.gms(15) 2 Mb
+--- .. DS2_DecSetsPrm_LdData.gms(413) 3 Mb
+--- GDXin=T:\Haikuv3\GAMS_161201\Scenarios\Shared\Inputs\Inflation231006.gdx
+--- GDX File ($gdxIn) T:\Haikuv3\GAMS_161201\Scenarios\Shared\Inputs\Inflation231006.gdx
+--- .. DS2_DecSetsPrm_LdData.gms(418) 3 Mb
+--- GDXin=T:\Haikuv3\GAMS_161201\Scenarios\Shared\Inputs\MPInput231006_31CSP.gdx
+--- GDX File ($gdxIn) T:\Haikuv3\GAMS_161201\Scenarios\Shared\Inputs\MPInput231006_31CSP.gdx
+--- .. DS2_DecSetsPrm_LdData.gms(424) 5 Mb
+--- GDXin=T:\Haikuv3\GAMS_161201\Scenarios\Shared\Inputs\AEO_CapCostYrStInput231006.gdx
+--- GDX File ($gdxIn) T:\Haikuv3\GAMS_161201\Scenarios\Shared\Inputs\AEO_CapCostYrStInput231006.gdx
+--- .. DS2_DecSetsPrm_LdData.gms(430) 5 Mb
+--- GDXin=T:\Haikuv3\GAMS_161201\Scenarios\Shared\Inputs\NREL_CapCostInput220812.gdx
+--- GDX File ($gdxIn) T:\Haikuv3\GAMS_161201\Scenarios\Shared\Inputs\NREL_CapCostInput220812.gdx
+--- .. DS2_DecSetsPrm_LdData.gms(435) 5 Mb
+--- GDXin=T:\Haikuv3\GAMS_161201\Scenarios\Shared\Inputs\EDemInput231006_31CSP.gdx
+--- GDX File ($gdxIn) T:\Haikuv3\GAMS_161201\Scenarios\Shared\Inputs\EDemInput231006_31CSP.gdx
+--- .. DS2_DecSetsPrm_LdData.gms(440) 22 Mb
+--- GDXin=T:\Haikuv3\GAMS_161201\Scenarios\Shared\Inputs\GenYrStInput231006_31CSP.gdx
+--- GDX File ($gdxIn) T:\Haikuv3\GAMS_161201\Scenarios\Shared\Inputs\GenYrStInput231006_31CSP.gdx
+--- .. DS2_DecSetsPrm_LdData.gms(444) 27 Mb
+--- GDXin=T:\Haikuv3\GAMS_161201\Scenarios\Shared\Inputs\FuelSupInput231006_31CSP.gdx
+--- GDX File ($gdxIn) T:\Haikuv3\GAMS_161201\Scenarios\Shared\Inputs\FuelSupInput231006_31CSP.gdx
+--- .. DS2_DecSetsPrm_LdData.gms(449) 27 Mb
+--- GDXin=T:\Haikuv3\GAMS_161201\Scenarios\Shared\Inputs\EmisYrStPolInput231006_31CSP.gdx
+--- GDX File ($gdxIn) T:\Haikuv3\GAMS_161201\Scenarios\Shared\Inputs\EmisYrStPolInput231006_31CSP.gdx
+--- .. DS2_DecSetsPrm_LdData.gms(454) 28 Mb
+--- GDXin=T:\Haikuv3\GAMS_161201\Scenarios\Shared\Inputs\TransInput231006_31CSP.gdx
+--- GDX File ($gdxIn) T:\Haikuv3\GAMS_161201\Scenarios\Shared\Inputs\TransInput231006_31CSP.gdx
+--- .. DS2_DecSetsPrm_LdData.gms(459) 29 Mb
+--- GDXin=T:\Haikuv3\GAMS_161201\Scenarios\Shared\Inputs\PolVarInput231006_31CSP.gdx
+--- GDX File ($gdxIn) T:\Haikuv3\GAMS_161201\Scenarios\Shared\Inputs\PolVarInput231006_31CSP.gdx
+--- .. DS2_DecSetsPrm_LdData.gms(464) 29 Mb
+--- GDXin=T:\Haikuv3\GAMS_161201\Scenarios\Shared\Inputs\SolarAFInput231006_31CSP.gdx
+--- GDX File ($gdxIn) T:\Haikuv3\GAMS_161201\Scenarios\Shared\Inputs\SolarAFInput231006_31CSP.gdx
+--- .. DS2_DecSetsPrm_LdData.gms(469) 29 Mb
+--- GDXin=T:\Haikuv3\GAMS_161201\Scenarios\Shared\Inputs\WindAFInput231006_31CSP.gdx
+--- GDX File ($gdxIn) T:\Haikuv3\GAMS_161201\Scenarios\Shared\Inputs\WindAFInput231006_31CSP.gdx
+--- .. DS2_DecSetsPrm_LdData.gms(474) 29 Mb
+--- GDXin=T:\Haikuv3\GAMS_161201\Scenarios\Shared\Inputs\RPSPolInput231006.gdx
+--- GDX File ($gdxIn) T:\Haikuv3\GAMS_161201\Scenarios\Shared\Inputs\RPSPolInput231006.gdx
+--- .. DS2_DecSetsPrm_LdData.gms(479) 29 Mb
+--- GDXin=T:\Haikuv3\GAMS_161201\Scenarios\Shared\Inputs\RECapReqInput231006.gdx
+--- GDX File ($gdxIn) T:\Haikuv3\GAMS_161201\Scenarios\Shared\Inputs\RECapReqInput231006.gdx
+--- .. DS2_DecSetsPrm_LdData.gms(484) 29 Mb
+--- GDXin=T:\Haikuv3\GAMS_161201\Scenarios\Shared\Inputs\RECapReqAEOInput231006.gdx
+--- GDX File ($gdxIn) T:\Haikuv3\GAMS_161201\Scenarios\Shared\Inputs\RECapReqAEOInput231006.gdx
+--- .. DS2_DecSetsPrm_LdData.gms(489) 29 Mb
+--- GDXin=T:\Haikuv3\GAMS_161201\Scenarios\Shared\Inputs\UShistdataInput231006.gdx
+--- GDX File ($gdxIn) T:\Haikuv3\GAMS_161201\Scenarios\Shared\Inputs\UShistdataInput231006.gdx
+--- .. DS2_DecSetsPrm_LdData.gms(494) 30 Mb
+--- GDXin=T:\Haikuv3\GAMS_161201\Scenarios\Shared\Inputs\CCSTrnStr231006.gdx
+--- GDX File ($gdxIn) T:\Haikuv3\GAMS_161201\Scenarios\Shared\Inputs\CCSTrnStr231006.gdx
+--- .. DS2_DecSetsPrm_LdData.gms(499) 31 Mb
+--- GDXin=T:\Haikuv3\GAMS_161201\Scenarios\Shared\Inputs\NRELCons231006.gdx
+--- GDX File ($gdxIn) T:\Haikuv3\GAMS_161201\Scenarios\Shared\Inputs\NRELCons231006.gdx
+--- .. DS2_DecSetsPrm_LdData.gms(504) 32 Mb
+--- GDXin=T:\Haikuv3\GAMS_161201\Scenarios\Shared\Inputs\CSAPR231006.gdx
+--- GDX File ($gdxIn) T:\Haikuv3\GAMS_161201\Scenarios\Shared\Inputs\CSAPR231006.gdx
+--- .. DS2_DecSetsPrm_LdData.gms(724) 32 Mb
+--- . DefScen.gms(19) 32 Mb
+--- .. DS3_General.gms(781) 33 Mb
+--- call gdxxrw.exe "NGPrices.xlsx" par=NGPriceHH rdim=1 cdim=1 rng=sheet1!C3:L34
+
+GDXXRW           35.1.0 r82a9585 Released Apr 29, 2021 WEI x86 64bit/MS Window
+Input file : T:\Haikuv3\GAMS_161201\Scenarios\230901_CSP\NGPrices.xlsx
+Output file: T:\Haikuv3\GAMS_161201\Scenarios\230901_CSP\NGPrices.gdx
+Total time = 906 Ms
+--- .. DS3_General.gms(782) 33 Mb
+--- GDXin=T:\Haikuv3\GAMS_161201\Scenarios\230901_CSP\NGPrices.gdx
+--- GDX File ($gdxIn) T:\Haikuv3\GAMS_161201\Scenarios\230901_CSP\NGPrices.gdx
+--- .. DS3_General.gms(786) 33 Mb
+--- call gdxxrw.exe "AEONGPrcRat.xlsx" par=AEONGPrcRat rdim = 3 rng=AEONGPrcRat!A2:D1117
+
+GDXXRW           35.1.0 r82a9585 Released Apr 29, 2021 WEI x86 64bit/MS Window
+Input file : T:\Haikuv3\GAMS_161201\Scenarios\230901_CSP\AEONGPrcRat.xlsx
+Output file: T:\Haikuv3\GAMS_161201\Scenarios\230901_CSP\AEONGPrcRat.gdx
+Total time = 969 Ms
+--- .. DS3_General.gms(787) 33 Mb
+--- GDXin=T:\Haikuv3\GAMS_161201\Scenarios\230901_CSP\AEONGPrcRat.gdx
+--- GDX File ($gdxIn) T:\Haikuv3\GAMS_161201\Scenarios\230901_CSP\AEONGPrcRat.gdx
+--- .. DS3_General.gms(862) 33 Mb
+--- . DefScen.gms(20) 33 Mb
+--- .. DS4_PPAR.gms(7) 33 Mb
+--- ... SetPPARMapping.gms(362) 33 Mb
+--- .. DS4_PPAR.gms(12) 33 Mb
+--- ... SetPPARMapping.gms(362) 33 Mb
+--- .. DS4_PPAR.gms(17) 33 Mb
+--- ... SetPPARMapping.gms(362) 33 Mb
+--- .. DS4_PPAR.gms(24) 33 Mb
+--- ... SetPPARMapping.gms(362) 33 Mb
+--- .. DS4_PPAR.gms(50) 33 Mb
+--- ... SetPPARMapping.gms(362) 33 Mb
+--- .. DS4_PPAR.gms(55) 33 Mb
+--- ... SetPPARMapping.gms(362) 33 Mb
+--- .. DS4_PPAR.gms(59) 33 Mb
+--- ... SetPPARMapping.gms(362) 33 Mb
+--- .. DS4_PPAR.gms(64) 33 Mb
+--- ... SetPPARMapping.gms(362) 33 Mb
+--- .. DS4_PPAR.gms(81) 33 Mb
+--- ... SetPPARMapping.gms(362) 33 Mb
+--- .. DS4_PPAR.gms(340) 33 Mb
+--- . DefScen.gms(21) 33 Mb
+--- .. DS4a_Consumption.gms(148) 33 Mb
+--- ... SetPPARMapping.gms(362) 33 Mb
+--- .. DS4a_Consumption.gms(235) 33 Mb
+--- . DefScen.gms(25) 33 Mb
+--- .. DS5_DecVarEqMdl.gms(178) 33 Mb
+--- ... LPEq.gms(608) 33 Mb
+--- .. DS5_DecVarEqMdl.gms(327) 33 Mb
+--- . DefScen.gms(26) 33 Mb
+--- .. DS6_LdInitVar.gms(26) 33 Mb
+--- . DefScen.gms(30) 33 Mb
+--- .. DS7_Bnds.gms(191) 33 Mb
+--- ... DS7a_TwkACF.gms(113) 33 Mb
+--- .. DS7_Bnds.gms(282) 33 Mb
+--- . DefScen.gms(37) 33 Mb
+--- .. DS8_PolOpts_Emis.gms(1425) 33 Mb
+--- . DefScen.gms(41) 33 Mb
+--- .. DS9_PolOpts_PS.gms(976) 33 Mb
+--- . DefScen.gms(134) 33 Mb
+--- Project_Results_Annual-CSP.gms(40) 33 Mb
+--- . Results_Def.gms(167) 33 Mb
+--- Project_Results_Annual-CSP.gms(71) 33 Mb
+--- call gdxxrw.exe "Emis0CSP.xlsx" par=Emis0AEO rdim=4 rng=Emis0AEO!A2:E32641 Output="Emis0AEO.gdx"
+
+GDXXRW           35.1.0 r82a9585 Released Apr 29, 2021 WEI x86 64bit/MS Window
+Input file : T:\Haikuv3\GAMS_161201\Scenarios\230901_CSP\Emis0CSP.xlsx
+Output file: T:\Haikuv3\GAMS_161201\Scenarios\230901_CSP\Emis0AEO.gdx
+Total time = 1875 Ms
+--- Project_Results_Annual-CSP.gms(72) 33 Mb
+--- GDXin=T:\Haikuv3\GAMS_161201\Scenarios\230901_CSP\Emis0AEO.gdx
+--- GDX File ($gdxIn) T:\Haikuv3\GAMS_161201\Scenarios\230901_CSP\Emis0AEO.gdx
+--- Project_Results_Annual-CSP.gms(76) 34 Mb
+--- call gdxxrw.exe "Emis0CSP.xlsx" par=Emis0CSP rdim=4 rng=Emis0CSP!A2:E32641 Output="Emis0CSP.gdx"
+
+GDXXRW           35.1.0 r82a9585 Released Apr 29, 2021 WEI x86 64bit/MS Window
+Input file : T:\Haikuv3\GAMS_161201\Scenarios\230901_CSP\Emis0CSP.xlsx
+Output file: T:\Haikuv3\GAMS_161201\Scenarios\230901_CSP\Emis0CSP.gdx
+Total time = 2094 Ms
+--- Project_Results_Annual-CSP.gms(77) 34 Mb
+--- GDXin=T:\Haikuv3\GAMS_161201\Scenarios\230901_CSP\Emis0CSP.gdx
+--- GDX File ($gdxIn) T:\Haikuv3\GAMS_161201\Scenarios\230901_CSP\Emis0CSP.gdx
+--- Project_Results_Annual-CSP.gms(90) 35 Mb
+--- . Results_Key_Annual-CSP.gms(341) 35 Mb
+--- Project_Results_Annual-CSP.gms(95) 35 Mb
+--- . Results_Key_Annual-CSP.gms(341) 35 Mb
+--- Project_Results_Annual-CSP.gms(100) 35 Mb
+--- . Results_Key_Annual-CSP.gms(341) 35 Mb
+--- Project_Results_Annual-CSP.gms(107) 35 Mb
+--- . Results_Key_Annual-CSP.gms(341) 35 Mb
+--- Project_Results_Annual-CSP.gms(112) 35 Mb
+--- . Results_Key_Annual-CSP.gms(341) 35 Mb
+--- Project_Results_Annual-CSP.gms(117) 35 Mb
+--- . Results_Key_Annual-CSP.gms(341) 35 Mb
+--- Project_Results_Annual-CSP.gms(122) 35 Mb
+--- . Results_Key_Annual-CSP.gms(341) 35 Mb
+--- Project_Results_Annual-CSP.gms(129) 35 Mb
+--- . Results_Key_Annual-CSP.gms(341) 35 Mb
+--- Project_Results_Annual-CSP.gms(134) 35 Mb
+--- . Results_Key_Annual-CSP.gms(341) 35 Mb
+--- Project_Results_Annual-CSP.gms(141) 35 Mb
+--- . Results_Key_Annual-CSP.gms(341) 36 Mb
+--- Project_Results_Annual-CSP.gms(146) 36 Mb
+--- . Results_Key_Annual-CSP.gms(341) 36 Mb
+--- Project_Results_Annual-CSP.gms(157) 36 Mb
+--- $echo File T:\Haikuv3\GAMS_161201\Scenarios\230901_CSP\gdx2xls.ini
+--- Project_Results_Annual-CSP.gms(166) 36 Mb
+--- call copy Project_Results_Annual-CSP.gms T:\Haikuv3\GAMS_161201\Scenarios\230901_CSP\KeyResults\KeyRes_240207_v9_CSP_31CSP_EVEmisAdj-psfin\Project_Results_Annual-CSP.gms
+        1 file(s) copied.
+--- Project_Results_Annual-CSP.gms(167) 36 Mb
+--- call copy Results_Key_Annual-CSP.gms T:\Haikuv3\GAMS_161201\Scenarios\230901_CSP\KeyResults\KeyRes_240207_v9_CSP_31CSP_EVEmisAdj-psfin\Results_Key_Annual-CSP.gms
+        1 file(s) copied.
+--- Project_Results_Annual-CSP.gms(169) 36 Mb
+--- Starting execution: elapsed 0:00:10.537
+--- Project_Results_Annual-CSP.gms(3313) 1675 Mb
+--- GDXin=T:\Haikuv3\GAMS_161201\Scenarios\Shared\Solutions\230901_CSP_31CSP_LPCal_231006_v5.gdx
+--- Project_Results_Annual-CSP.gms(3313) 2682 Mb
+--- GDX File (execute_load) T:\Haikuv3\GAMS_161201\Scenarios\Shared\Solutions\230901_CSP_31CSP_LPCal_231006_v5.gdx
+--- Project_Results_Annual-CSP.gms(3322) 2682 Mb
+*** GDXopenRead failed T:\Haikuv3\GAMS_161201\Scenarios\Shared\Solutions\Calibration\NA.gdx
+*** Msg: No such file or directory
+--- Project_Results_Annual-CSP.gms(3518) 3831 Mb 2 Errors  4 secs
+--- Project_Results_Annual-CSP.gms(3522) 3831 Mb 2 Errors  75 secs
+--- Project_Results_Annual-CSP.gms(4480) 5002 Mb 2 Errors
+--- GDXin=T:\Haikuv3\GAMS_161201\Scenarios\Shared\Solutions\230901_CSP_31CSP_BL_231006_v9_CSP_DemnoIRA_NGBL2023.gdx
+--- Project_Results_Annual-CSP.gms(4480) 5134 Mb
+--- GDX File (execute_load) T:\Haikuv3\GAMS_161201\Scenarios\Shared\Solutions\230901_CSP_31CSP_BL_231006_v9_CSP_DemnoIRA_NGBL2023.gdx
+--- Project_Results_Annual-CSP.gms(4488) 5134 Mb
+--- GDXin=T:\Haikuv3\GAMS_161201\Scenarios\230901_CSP\Output\31CSP_BL_231006_v9_CSP_DemnoIRA_NGBL2023\230901_CSP_31CSP_BL_231006_v9_CSP_DemnoIRA_NGBL2023.gdx
+--- Project_Results_Annual-CSP.gms(4488) 5219 Mb  4 secs
+--- GDX File (execute_load) T:\Haikuv3\GAMS_161201\Scenarios\230901_CSP\Output\31CSP_BL_231006_v9_CSP_DemnoIRA_NGBL2023\230901_CSP_31CSP_BL_231006_v9_CSP_DemnoIRA_NGBL2023.gdx
+--- Project_Results_Annual-CSP.gms(4707) 5410 Mb  20 secs
+--- Project_Results_Annual-CSP.gms(4726) 5410 Mb  20 secs
+--- Project_Results_Annual-CSP.gms(4802) 5410 Mb  30 secs
+--- Project_Results_Annual-CSP.gms(4824) 5410 Mb
+--- GDXin=T:\Haikuv3\GAMS_161201\Scenarios\Shared\Solutions\230901_CSP_31CSP_BL_231006_v5_CSP_DemnoIRA_NGBL2022.gdx
+--- GDX File (execute_load) T:\Haikuv3\GAMS_161201\Scenarios\Shared\Solutions\230901_CSP_31CSP_BL_231006_v5_CSP_DemnoIRA_NGBL2022.gdx
+--- Project_Results_Annual-CSP.gms(4832) 5410 Mb
+--- GDXin=T:\Haikuv3\GAMS_161201\Scenarios\230901_CSP\Output\31CSP_BL_231006_v5_CSP_DemnoIRA_NGBL2022\230901_CSP_31CSP_BL_231006_v5_CSP_DemnoIRA_NGBL2022.gdx
+--- Project_Results_Annual-CSP.gms(4832) 5410 Mb  4 secs
+--- GDX File (execute_load) T:\Haikuv3\GAMS_161201\Scenarios\230901_CSP\Output\31CSP_BL_231006_v5_CSP_DemnoIRA_NGBL2022\230901_CSP_31CSP_BL_231006_v5_CSP_DemnoIRA_NGBL2022.gdx
+--- Project_Results_Annual-CSP.gms(5051) 5413 Mb  20 secs
+--- Project_Results_Annual-CSP.gms(5070) 5413 Mb  21 secs
+--- Project_Results_Annual-CSP.gms(5146) 5414 Mb  17 secs
+--- Project_Results_Annual-CSP.gms(5168) 5414 Mb
+--- GDXin=T:\Haikuv3\GAMS_161201\Scenarios\Shared\Solutions\230901_CSP_31CSP_BLCSAPR_231006_v9_CSP_DemnoIRA_NGBL2023_CCSYes.gdx
+--- Project_Results_Annual-CSP.gms(5168) 5417 Mb
+--- GDX File (execute_load) T:\Haikuv3\GAMS_161201\Scenarios\Shared\Solutions\230901_CSP_31CSP_BLCSAPR_231006_v9_CSP_DemnoIRA_NGBL2023_CCSYes.gdx
+--- Project_Results_Annual-CSP.gms(5176) 5417 Mb
+--- GDXin=T:\Haikuv3\GAMS_161201\Scenarios\230901_CSP\Output\31CSP_BLCSAPR_231006_v9_CSP_DemnoIRA_NGBL2023_CCSYes\230901_CSP_31CSP_BLCSAPR_231006_v9_CSP_DemnoIRA_NGBL2023_CCSYes.gdx
+--- Project_Results_Annual-CSP.gms(5176) 5417 Mb  4 secs
+--- GDX File (execute_load) T:\Haikuv3\GAMS_161201\Scenarios\230901_CSP\Output\31CSP_BLCSAPR_231006_v9_CSP_DemnoIRA_NGBL2023_CCSYes\230901_CSP_31CSP_BLCSAPR_231006_v9_CSP_DemnoIRA_NGBL2023_CCSYes.gdx
+--- Project_Results_Annual-CSP.gms(5395) 5423 Mb  20 secs
+--- Project_Results_Annual-CSP.gms(5414) 5423 Mb  23 secs
+--- Project_Results_Annual-CSP.gms(5490) 5424 Mb  19 secs
+--- Project_Results_Annual-CSP.gms(5514) 5424 Mb
+--- GDXin=T:\Haikuv3\GAMS_161201\Scenarios\Shared\Solutions\230901_CSP_31CSP_CSP_231006_v9_CSP_Demref2023_NGBLIRA2023_CCSYes.gdx
+--- GDX File (execute_load) T:\Haikuv3\GAMS_161201\Scenarios\Shared\Solutions\230901_CSP_31CSP_CSP_231006_v9_CSP_Demref2023_NGBLIRA2023_CCSYes.gdx
+--- Project_Results_Annual-CSP.gms(5522) 5424 Mb
+--- GDXin=T:\Haikuv3\GAMS_161201\Scenarios\230901_CSP\Output\31CSP_CSP_231006_v9_CSP_Demref2023_NGBLIRA2023_CCSYes\230901_CSP_31CSP_CSP_231006_v9_CSP_Demref2023_NGBLIRA2023_CCSYes.gdx
+--- Project_Results_Annual-CSP.gms(5522) 5424 Mb  3 secs
+--- GDX File (execute_load) T:\Haikuv3\GAMS_161201\Scenarios\230901_CSP\Output\31CSP_CSP_231006_v9_CSP_Demref2023_NGBLIRA2023_CCSYes\230901_CSP_31CSP_CSP_231006_v9_CSP_Demref2023_NGBLIRA2023_CCSYes.gdx
+--- Project_Results_Annual-CSP.gms(5741) 5424 Mb  55 secs
+--- Project_Results_Annual-CSP.gms(5760) 5424 Mb  19 secs
+--- Project_Results_Annual-CSP.gms(5836) 5426 Mb  18 secs
+--- Project_Results_Annual-CSP.gms(5858) 5426 Mb
+--- GDXin=T:\Haikuv3\GAMS_161201\Scenarios\Shared\Solutions\230901_CSP_31CSP_BLIRA_231006_v5_CSP_Demref2023_NGBL2022_CCSYes.gdx
+--- GDX File (execute_load) T:\Haikuv3\GAMS_161201\Scenarios\Shared\Solutions\230901_CSP_31CSP_BLIRA_231006_v5_CSP_Demref2023_NGBL2022_CCSYes.gdx
+--- Project_Results_Annual-CSP.gms(5866) 5426 Mb
+--- GDXin=T:\Haikuv3\GAMS_161201\Scenarios\230901_CSP\Output\31CSP_BLIRA_231006_v5_CSP_Demref2023_NGBL2022_CCSYes\230901_CSP_31CSP_BLIRA_231006_v5_CSP_Demref2023_NGBL2022_CCSYes.gdx
+--- Project_Results_Annual-CSP.gms(5866) 5426 Mb  4 secs
+--- GDX File (execute_load) T:\Haikuv3\GAMS_161201\Scenarios\230901_CSP\Output\31CSP_BLIRA_231006_v5_CSP_Demref2023_NGBL2022_CCSYes\230901_CSP_31CSP_BLIRA_231006_v5_CSP_Demref2023_NGBL2022_CCSYes.gdx
+--- Project_Results_Annual-CSP.gms(6085) 5427 Mb  55 secs
+--- Project_Results_Annual-CSP.gms(6104) 5427 Mb  21 secs
+--- Project_Results_Annual-CSP.gms(6180) 5429 Mb  22 secs
+--- Project_Results_Annual-CSP.gms(6202) 5429 Mb
+--- GDXin=T:\Haikuv3\GAMS_161201\Scenarios\Shared\Solutions\230901_CSP_31CSP_CSP_231006_v9_CSP_Demref2023_NGBLIRA2023_CCSNo.gdx
+--- GDX File (execute_load) T:\Haikuv3\GAMS_161201\Scenarios\Shared\Solutions\230901_CSP_31CSP_CSP_231006_v9_CSP_Demref2023_NGBLIRA2023_CCSNo.gdx
+--- Project_Results_Annual-CSP.gms(6210) 5429 Mb
+--- GDXin=T:\Haikuv3\GAMS_161201\Scenarios\230901_CSP\Output\31CSP_CSP_231006_v9_CSP_Demref2023_NGBLIRA2023_CCSNo\230901_CSP_31CSP_CSP_231006_v9_CSP_Demref2023_NGBLIRA2023_CCSNo.gdx
+--- Project_Results_Annual-CSP.gms(6210) 5429 Mb  3 secs
+--- GDX File (execute_load) T:\Haikuv3\GAMS_161201\Scenarios\230901_CSP\Output\31CSP_CSP_231006_v9_CSP_Demref2023_NGBLIRA2023_CCSNo\230901_CSP_31CSP_CSP_231006_v9_CSP_Demref2023_NGBLIRA2023_CCSNo.gdx
+--- Project_Results_Annual-CSP.gms(6429) 5434 Mb  55 secs
+--- Project_Results_Annual-CSP.gms(6448) 5434 Mb  17 secs
+--- Project_Results_Annual-CSP.gms(6524) 5435 Mb  20 secs
+--- Project_Results_Annual-CSP.gms(6546) 5435 Mb
+--- GDXin=T:\Haikuv3\GAMS_161201\Scenarios\Shared\Solutions\230901_CSP_31CSP_BLIRA_231006_v9_CSP_Demref2023_NGBLIRA2023_CCSYes.gdx
+--- GDX File (execute_load) T:\Haikuv3\GAMS_161201\Scenarios\Shared\Solutions\230901_CSP_31CSP_BLIRA_231006_v9_CSP_Demref2023_NGBLIRA2023_CCSYes.gdx
+--- Project_Results_Annual-CSP.gms(6554) 5435 Mb
+--- GDXin=T:\Haikuv3\GAMS_161201\Scenarios\230901_CSP\Output\31CSP_BLIRA_231006_v9_CSP_Demref2023_NGBLIRA2023_CCSYes\230901_CSP_31CSP_BLIRA_231006_v9_CSP_Demref2023_NGBLIRA2023_CCSYes.gdx
+--- Project_Results_Annual-CSP.gms(6554) 5435 Mb  3 secs
+--- GDX File (execute_load) T:\Haikuv3\GAMS_161201\Scenarios\230901_CSP\Output\31CSP_BLIRA_231006_v9_CSP_Demref2023_NGBLIRA2023_CCSYes\230901_CSP_31CSP_BLIRA_231006_v9_CSP_Demref2023_NGBLIRA2023_CCSYes.gdx
+--- Project_Results_Annual-CSP.gms(6773) 5438 Mb  55 secs
+--- Project_Results_Annual-CSP.gms(6792) 5438 Mb  20 secs
+--- Project_Results_Annual-CSP.gms(6868) 5439 Mb  20 secs
+--- Project_Results_Annual-CSP.gms(6892) 5439 Mb
+--- GDXin=T:\Haikuv3\GAMS_161201\Scenarios\Shared\Solutions\230901_CSP_31CSP_BL_231006_v9_CSP_DemnoIRA_NGHigh2023.gdx
+--- GDX File (execute_load) T:\Haikuv3\GAMS_161201\Scenarios\Shared\Solutions\230901_CSP_31CSP_BL_231006_v9_CSP_DemnoIRA_NGHigh2023.gdx
+--- Project_Results_Annual-CSP.gms(6900) 5439 Mb
+--- GDXin=T:\Haikuv3\GAMS_161201\Scenarios\230901_CSP\Output\31CSP_BL_231006_v9_CSP_DemnoIRA_NGHigh2023\230901_CSP_31CSP_BL_231006_v9_CSP_DemnoIRA_NGHigh2023.gdx
+--- Project_Results_Annual-CSP.gms(6900) 5439 Mb  3 secs
+--- GDX File (execute_load) T:\Haikuv3\GAMS_161201\Scenarios\230901_CSP\Output\31CSP_BL_231006_v9_CSP_DemnoIRA_NGHigh2023\230901_CSP_31CSP_BL_231006_v9_CSP_DemnoIRA_NGHigh2023.gdx
+--- Project_Results_Annual-CSP.gms(7119) 5443 Mb  18 secs
+--- Project_Results_Annual-CSP.gms(7138) 5443 Mb  17 secs
+--- Project_Results_Annual-CSP.gms(7214) 5444 Mb  19 secs
+--- Project_Results_Annual-CSP.gms(7236) 5444 Mb
+--- GDXin=T:\Haikuv3\GAMS_161201\Scenarios\Shared\Solutions\230901_CSP_31CSP_CSP_231006_v9_CSP_Demlowogs_NGHigh2023_CCSYes.gdx
+--- GDX File (execute_load) T:\Haikuv3\GAMS_161201\Scenarios\Shared\Solutions\230901_CSP_31CSP_CSP_231006_v9_CSP_Demlowogs_NGHigh2023_CCSYes.gdx
+--- Project_Results_Annual-CSP.gms(7244) 5444 Mb
+--- GDXin=T:\Haikuv3\GAMS_161201\Scenarios\230901_CSP\Output\31CSP_CSP_231006_v9_CSP_Demlowogs_NGHigh2023_CCSYes\230901_CSP_31CSP_CSP_231006_v9_CSP_Demlowogs_NGHigh2023_CCSYes.gdx
+--- GDX File (execute_load) T:\Haikuv3\GAMS_161201\Scenarios\230901_CSP\Output\31CSP_CSP_231006_v9_CSP_Demlowogs_NGHigh2023_CCSYes\230901_CSP_31CSP_CSP_231006_v9_CSP_Demlowogs_NGHigh2023_CCSYes.gdx
+--- Project_Results_Annual-CSP.gms(7463) 5445 Mb  55 secs
+--- Project_Results_Annual-CSP.gms(7482) 5445 Mb  21 secs
+--- Project_Results_Annual-CSP.gms(7558) 5446 Mb  20 secs
+--- Project_Results_Annual-CSP.gms(7582) 5446 Mb
+--- GDXin=T:\Haikuv3\GAMS_161201\Scenarios\Shared\Solutions\230901_CSP_31CSP_CSP_231006_v9_CSP_Demhighogs_NGLow2023_CCSYes.gdx
+--- GDX File (execute_load) T:\Haikuv3\GAMS_161201\Scenarios\Shared\Solutions\230901_CSP_31CSP_CSP_231006_v9_CSP_Demhighogs_NGLow2023_CCSYes.gdx
+--- Project_Results_Annual-CSP.gms(7590) 5446 Mb
+--- GDXin=T:\Haikuv3\GAMS_161201\Scenarios\230901_CSP\Output\31CSP_CSP_231006_v9_CSP_Demhighogs_NGLow2023_CCSYes\230901_CSP_31CSP_CSP_231006_v9_CSP_Demhighogs_NGLow2023_CCSYes.gdx
+--- Project_Results_Annual-CSP.gms(7590) 5446 Mb  3 secs
+--- GDX File (execute_load) T:\Haikuv3\GAMS_161201\Scenarios\230901_CSP\Output\31CSP_CSP_231006_v9_CSP_Demhighogs_NGLow2023_CCSYes\230901_CSP_31CSP_CSP_231006_v9_CSP_Demhighogs_NGLow2023_CCSYes.gdx
+--- Project_Results_Annual-CSP.gms(7809) 5451 Mb  60 secs
+--- Project_Results_Annual-CSP.gms(7828) 5451 Mb  19 secs
+--- Project_Results_Annual-CSP.gms(7904) 5452 Mb  20 secs
+--- Project_Results_Annual-CSP.gms(7926) 5452 Mb
+--- GDXin=T:\Haikuv3\GAMS_161201\Scenarios\Shared\Solutions\230901_CSP_31CSP_BL_231006_v9_CSP_DemnoIRA_NGLow2023.gdx
+--- GDX File (execute_load) T:\Haikuv3\GAMS_161201\Scenarios\Shared\Solutions\230901_CSP_31CSP_BL_231006_v9_CSP_DemnoIRA_NGLow2023.gdx
+--- Project_Results_Annual-CSP.gms(7934) 5452 Mb
+--- GDXin=T:\Haikuv3\GAMS_161201\Scenarios\230901_CSP\Output\31CSP_BL_231006_v9_CSP_DemnoIRA_NGLow2023\230901_CSP_31CSP_BL_231006_v9_CSP_DemnoIRA_NGLow2023.gdx
+--- Project_Results_Annual-CSP.gms(7934) 5452 Mb  3 secs
+--- GDX File (execute_load) T:\Haikuv3\GAMS_161201\Scenarios\230901_CSP\Output\31CSP_BL_231006_v9_CSP_DemnoIRA_NGLow2023\230901_CSP_31CSP_BL_231006_v9_CSP_DemnoIRA_NGLow2023.gdx
+--- Project_Results_Annual-CSP.gms(8153) 5455 Mb  17 secs
+--- Project_Results_Annual-CSP.gms(8172) 5455 Mb  18 secs
+--- Project_Results_Annual-CSP.gms(8248) 5456 Mb  20 secs
+--- Project_Results_Annual-CSP.gms(8268) 5456 Mb
+--- GDX File (execute_unload) T:\Haikuv3\GAMS_161201\Scenarios\230901_CSP/KeyResults/KeyRes_240207_v9_CSP_31CSP_EVEmisAdj-psfin/KeyRes_230901_CSP_240207_v9_CSP_31CSP_EVEmisAdj-psfin.gdx
+--- Project_Results_Annual-CSP.gms(8278) 5456 Mb
+GDX2XLS          35.1.0 r82a9585 Released Apr 29, 2021 WEI x86 64bit/MS Window
+Output file: T:\Haikuv3\GAMS_161201\Scenarios\230901_CSP\KeyResults\KeyRes_240207_v9_CSP_31CSP_EVEmisAdj-psfin\KeyRes_230901_CSP_240207_v9_CSP_31CSP_EVEmisAdj-psfin.xlsx
+--- Putfile dummy T:\Haikuv3\GAMS_161201\Scenarios\230901_CSP\dummy.put
+--- Project_Results_Annual-CSP.gms(8278) 5456 Mb 2 Errors
+*** Status: Execution error(s)
+--- Job Project_Results_Annual-CSP.gms Stop 04/09/24 14:40:06 elapsed 0:20:02.404
+Exit code = 3
